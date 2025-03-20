@@ -5,6 +5,7 @@ import { InfoSection } from "@/components/info-section"
 import { Separator } from "@/components/ui/separator"
 import { notFound } from "next/navigation"
 
+
 // This would typically be a database or API call
 async function getProfileData(username: string) {
   // Mock data - in a real app, fetch from API/database
