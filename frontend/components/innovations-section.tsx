@@ -67,14 +67,14 @@ export function InnovationsSection({ innovations = [] }: InnovationsSectionProps
   return (
     <Card className="group relative shadow-md">
       <div className="flex justify-between items-center px-6 pt-6 pb-4 border-b">
-        <CardTitle className="text-2xl font-bold">Innovations & Projects</CardTitle>
+        <CardTitle className="text-2xl font-bold">Innovations</CardTitle>
         <Button
           onClick={handleAddInnovation}
           variant="outline"
           className="text-green-600 border-green-500 hover:bg-green-50"
         >
           <PlusCircle className="mr-2 h-4 w-4" />
-          Add Project
+          Add Innovation
         </Button>
       </div>
       <CardContent className="pt-6">
