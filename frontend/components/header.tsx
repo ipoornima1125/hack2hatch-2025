@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search } from "lucide-react"
 
 export function Header() {
@@ -46,7 +46,15 @@ export function Header() {
           </div>
           <Link href="/profile/johnsmith">
             <Avatar>
-              <AvatarFallback>U</AvatarFallback>
+              <AvatarImage src="/default-avatar.png" alt="User Avatar" />
+              <AvatarFallback>
+                <Image 
+                  src="/default-avatar.png" 
+                  alt="Default Avatar" 
+                  width={40} 
+                  height={40} 
+                />
+              </AvatarFallback>
             </Avatar>
           </Link>
         </div>
