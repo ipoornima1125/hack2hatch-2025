@@ -156,7 +156,9 @@ async function getProfileData(username: string) {
 }
 
 export default async function ProfilePage({ params }: { params: { username: string } }) {
-  const profileData = await getProfileData(params.username)
+  // We need to await params before using its properties
+  const { username } = await params
+  const profileData = await getProfileData(username)
 
   if (!profileData) {
     notFound()
