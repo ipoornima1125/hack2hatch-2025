@@ -4,10 +4,16 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { EditButton } from "@/components/edit-button"
 import { EditModal } from "@/components/edit-modal"
+import { Button } from "@/components/ui/button"
 
 interface BioSectionProps {
   bio?: string
-  education?: { institution: string; degree: string; year: string }[]
+  education?: { 
+    institution: string
+    degree: string
+    startDate: string
+    endDate: string 
+  }[]
   certifications?: { name: string; issuer: string; year: string }[]
 }
 
@@ -28,18 +34,43 @@ export function BioSection({
     // In a real app, you would save this to the database
   }
 
-  const handleEducationSave = (index: number, data: { institution: string; degree: string; year: string }) => {
+  const handleAddEducation = () => {
+    const newEducation = {
+      institution: "",
+      degree: "",
+      startDate: "",
+      endDate: ""
+    }
+    setEducationData([...educationData, newEducation])
+    setEditingEducation(educationData.length) // Set editing mode for new entry
+  }
+
+  const handleEducationSave = (index: number, data: { 
+    institution: string
+    degree: string
+    startDate: string
+    endDate: string 
+  }) => {
     const newEducation = [...educationData]
     newEducation[index] = data
     setEducationData(newEducation)
     // In a real app, you would save this to the database
   }
 
+  const handleAddCertification = () => {
+    const newCertification = {
+      name: "",
+      issuer: "",
+      year: ""
+    }
+    setCertificationsData([...certificationsData, newCertification])
+    setEditingCertification(certificationsData.length) // Set editing mode for new entry
+  }
+
   const handleCertificationSave = (index: number, data: { name: string; issuer: string; year: string }) => {
     const newCertifications = [...certificationsData]
     newCertifications[index] = data
     setCertificationsData(newCertifications)
-    // In a real app, you would save this to the database
   }
 
   return (
@@ -70,9 +101,15 @@ export function BioSection({
       </Card>
 
       <Card className="group relative">
-        <EditButton onClick={() => setEditingEducation(educationData.length > 0 ? 0 : null)} />
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Education</CardTitle>
+          <Button
+            onClick={handleAddEducation}
+            variant="outline"
+            className="text-green-600 border-green-500"
+          >
+            Add Education
+          </Button>
         </CardHeader>
         <CardContent>
           {educationData.length === 0 ? (
@@ -80,14 +117,17 @@ export function BioSection({
           ) : (
             <div className="space-y-4">
               {educationData.map((edu, index) => (
-                <div key={index} className="group/item relative">
+                <div key={index} className="group/item relative border rounded-lg p-4">
                   <EditButton
                     onClick={() => setEditingEducation(index)}
-                    className="right-0 top-0 group-hover/item:opacity-100"
+                    className="right-2 top-2 opacity-0 group-hover/item:opacity-100"
                   />
                   <p className="font-medium">{edu.institution}</p>
                   <p className="text-sm text-muted-foreground">
-                    {edu.degree}, {edu.year}
+                    {edu.degree}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {edu.startDate} - {edu.endDate || 'Present'}
                   </p>
 
                   {editingEducation === index && (
@@ -95,7 +135,10 @@ export function BioSection({
                       title="Edit Education"
                       isOpen={true}
                       onClose={() => setEditingEducation(null)}
-                      onSave={(data) => handleEducationSave(index, data)}
+                      onSave={(data) => {
+                        handleEducationSave(index, data)
+                        setEditingEducation(null)
+                      }}
                       fields={[
                         {
                           id: "institution",
@@ -110,12 +153,32 @@ export function BioSection({
                           value: edu.degree,
                         },
                         {
-                          id: "year",
-                          label: "Year",
+                          id: "startDate",
+                          label: "Start Date",
                           type: "text",
-                          value: edu.year,
+                          value: edu.startDate,
+                        },
+                        {
+                          id: "endDate",
+                          label: "End Date (leave empty for present)",
+                          type: "text",
+                          value: edu.endDate,
                         },
                       ]}
+                      extraButtons={
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          onClick={() => {
+                            const newEducation = educationData.filter((_, i) => i !== index)
+                            setEducationData(newEducation)
+                            setEditingEducation(null)
+                          }}
+                          className="mr-auto"
+                        >
+                          Delete Education
+                        </Button>
+                      }
                     />
                   )}
                 </div>
@@ -126,9 +189,15 @@ export function BioSection({
       </Card>
 
       <Card className="group relative">
-        <EditButton onClick={() => setEditingCertification(certificationsData.length > 0 ? 0 : null)} />
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Certifications</CardTitle>
+          <Button
+            onClick={handleAddCertification}
+            variant="outline"
+            className="text-green-600 border-green-500"
+          >
+            Add Certification
+          </Button>
         </CardHeader>
         <CardContent>
           {certificationsData.length === 0 ? (
@@ -136,14 +205,14 @@ export function BioSection({
           ) : (
             <div className="space-y-4">
               {certificationsData.map((cert, index) => (
-                <div key={index} className="group/item relative">
+                <div key={index} className="group/item relative border rounded-lg p-4">
                   <EditButton
                     onClick={() => setEditingCertification(index)}
-                    className="right-0 top-0 group-hover/item:opacity-100"
+                    className="right-2 top-2 opacity-0 group-hover/item:opacity-100"
                   />
                   <p className="font-medium">{cert.name}</p>
                   <p className="text-sm text-muted-foreground">
-                    {cert.issuer}, {cert.year}
+                    {cert.issuer} • {cert.year}
                   </p>
 
                   {editingCertification === index && (
@@ -151,17 +220,20 @@ export function BioSection({
                       title="Edit Certification"
                       isOpen={true}
                       onClose={() => setEditingCertification(null)}
-                      onSave={(data) => handleCertificationSave(index, data)}
+                      onSave={(data) => {
+                        handleCertificationSave(index, data)
+                        setEditingCertification(null)
+                      }}
                       fields={[
                         {
                           id: "name",
-                          label: "Name",
+                          label: "Certification Name",
                           type: "text",
                           value: cert.name,
                         },
                         {
                           id: "issuer",
-                          label: "Issuer",
+                          label: "Issuing Organization",
                           type: "text",
                           value: cert.issuer,
                         },
@@ -172,6 +244,20 @@ export function BioSection({
                           value: cert.year,
                         },
                       ]}
+                      extraButtons={
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          onClick={() => {
+                            const newCertifications = certificationsData.filter((_, i) => i !== index)
+                            setCertificationsData(newCertifications)
+                            setEditingCertification(null)
+                          }}
+                          className="mr-auto"
+                        >
+                          Delete Certification
+                        </Button>
+                      }
                     />
                   )}
                 </div>

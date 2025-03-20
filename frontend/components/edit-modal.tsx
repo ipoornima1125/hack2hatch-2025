@@ -26,9 +26,10 @@ interface EditModalProps {
     type: "text" | "textarea"
     value: string
   }[]
+  extraButtons?: React.ReactNode
 }
 
-export function EditModal({ title, description, isOpen, onClose, onSave, fields }: EditModalProps) {
+export function EditModal({ title, description, isOpen, onClose, onSave, fields, extraButtons }: EditModalProps) {
   const [formData, setFormData] = useState<Record<string, string>>(
     fields.reduce((acc, field) => ({ ...acc, [field.id]: field.value }), {}),
   )
@@ -78,7 +79,8 @@ export function EditModal({ title, description, isOpen, onClose, onSave, fields 
             </div>
           ))}
         </div>
-        <DialogFooter>
+        <DialogFooter className="flex items-center">
+          {extraButtons}
           <Button type="button" variant="outline" onClick={onClose}>
             Cancel
           </Button>
