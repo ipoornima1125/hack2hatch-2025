@@ -31,47 +31,47 @@ export function Header() {
       setSearchResults([
         {
           id: "1",
-          name: "Dr. Sarah Chen",
-          role: "Mentor",
-          expertise: ["AI/ML", "Data Science", "Deep Learning", "Neural Networks"],
-          bio: "Leading AI researcher with 10+ years of experience in machine learning and deep neural networks. Previously led AI initiatives at major tech companies.",
-          location: "San Francisco, CA",
-          experience: "10+ years",
-          availability: "Available for weekly mentoring",
-          connections: 500
+          name: "Alex Chen",
+          role: "Innovator",
+          expertise: ["AI/ML", "Robotics", "Computer Vision", "ROS"],
+          bio: "Pioneering innovator in AI-driven robotics. Founder of RoboAI Solutions, developing next-generation robotic assistants. Former R&D Lead at Boston Dynamics with multiple patents in human-robot interaction.",
+          location: "Boston, MA",
+          experience: "8+ years",
+          availability: "Open to research collaboration",
+          connections: 1500
         },
         {
           id: "2",
-          name: "Michael Rodriguez",
-          role: "Investor",
-          expertise: ["Fintech", "SaaS", "B2B", "Enterprise Software"],
-          bio: "Angel investor and venture capitalist specializing in early-stage startups. Portfolio includes successful exits in fintech and enterprise software.",
-          location: "New York, NY",
-          experience: "15+ years",
-          availability: "Open to pitch meetings",
-          connections: 1200
+          name: "Dr. Maya Patel",
+          role: "Mentor",
+          expertise: ["Quantum Computing", "AI Ethics", "Machine Learning"],
+          bio: "Quantum computing researcher and AI ethics advocate. Leading breakthrough research in quantum machine learning applications. Published in Nature and Science.",
+          location: "Cambridge, MA",
+          experience: "12+ years",
+          availability: "Available for mentoring",
+          connections: 2000
         },
         {
           id: "3",
-          name: "Emily Zhang",
-          role: "Expert",
-          expertise: ["UX Design", "Product Strategy", "Design Systems", "User Research"],
-          bio: "Product design leader focused on creating intuitive user experiences. Previously designed products used by millions of users globally.",
-          location: "London, UK",
-          experience: "8+ years",
-          availability: "Available for consulting",
-          connections: 800
+          name: "James Wilson",
+          role: "Investor",
+          expertise: ["DeepTech", "Robotics", "AI Startups"],
+          bio: "Managing Partner at TechFrontier Ventures. Invested in 20+ deep tech startups with 3 successful exits. Focus on robotics and AI innovations.",
+          location: "San Francisco, CA",
+          experience: "15+ years",
+          availability: "Open to pitch meetings",
+          connections: 3000
         },
         {
           id: "4",
-          name: "Raj Patel",
-          role: "Innovator",
-          expertise: ["Blockchain", "Web3", "Smart Contracts", "DeFi"],
-          bio: "Serial entrepreneur building decentralized solutions. Founded multiple successful blockchain startups and contributed to major protocols.",
-          location: "Singapore",
-          experience: "6+ years",
-          availability: "Looking for co-founders",
-          connections: 600
+          name: "Dr. Sophie Laurent",
+          role: "Expert",
+          expertise: ["Neural Networks", "Autonomous Systems", "Robotics"],
+          bio: "Leading researcher in autonomous systems. Developed breakthrough algorithms for robot learning. Previously at OpenAI and DeepMind.",
+          location: "Paris, France",
+          experience: "10+ years",
+          availability: "Available for consulting",
+          connections: 1800
         }
       ])
       setIsSearching(false)

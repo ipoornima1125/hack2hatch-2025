@@ -55,65 +55,101 @@ async function getProfileData(username: string) {
   // Mock data - in a real app, fetch from API/database
   const profiles: Record<string, ProfileData> = {
     johnsmith: {
-      fullName: "John Smith",
-      industry: "Web Development",
-      skills: ["React", "Next.js", "UI Design"],
-      bio: "Passionate web developer with over 5 years of experience creating modern, responsive web applications.",
+      fullName: "Alex Chen",
+      industry: "AI & Robotics Innovation",
+      skills: ["Machine Learning", "Robotics", "Computer Vision", "Python", "ROS"],
+      bio: "AI and robotics innovator specializing in autonomous systems. Founder of RoboAI Solutions, developing next-generation healthcare and manufacturing robotics. Previously led R&D at Boston Dynamics with focus on human-robot interaction.",
       education: [
         { 
-          institution: "University of Technology",
-          degree: "BSc Computer Science",
-          startDate: "2014",
-          endDate: "2018"
+          institution: "Massachusetts Institute of Technology",
+          degree: "Ph.D. in Robotics Engineering",
+          startDate: "2015",
+          endDate: "2019"
+        },
+        {
+          institution: "Stanford University",
+          degree: "MS in Computer Science",
+          startDate: "2013",
+          endDate: "2015"
         }
       ],
-      certifications: [{ name: "AWS Certified Developer", issuer: "Amazon Web Services", year: "2021" }],
+      certifications: [
+        { name: "TensorFlow Advanced Certification", issuer: "Google", year: "2022" },
+        { name: "AWS Machine Learning Specialty", issuer: "Amazon", year: "2021" },
+        { name: "Robotics System Architecture", issuer: "ROS Industrial", year: "2020" }
+      ],
       posts: [] as Post[],
       infoItems: [
-        { title: "Looking for", content: "Collaboration opportunities with startups and established businesses" },
+        { title: "Looking for", content: "Collaboration with researchers and engineers in AI robotics" }
       ],
       innovations: [
         {
           id: "innovation-1",
-          title: "Open Source Component Library",
-          description: "A modern React component library with a focus on accessibility and customization.",
+          title: "HealthBot Assistant",
+          description: "An AI-powered robotic assistant for hospitals that automates routine tasks and enhances patient care. Implemented in 5 major hospitals, reducing nurse workload by 30%.",
           status: "In Progress",
-          technologies: ["React", "TypeScript", "Storybook", "Jest"]
+          technologies: ["ROS", "Python", "TensorFlow", "Computer Vision", "Sensor Fusion"]
         },
         {
           id: "innovation-2",
-          title: "AI-Powered Code Review Tool",
-          description: "Automated code review tool that provides intelligent suggestions for code improvements.",
-          status: "Planning",
-          technologies: ["Python", "Machine Learning", "Git"]
+          title: "Smart Manufacturing Automation",
+          description: "Developed an intelligent robotic system for flexible manufacturing, featuring real-time adaptation and collaborative robot-human workflows.",
+          status: "Completed",
+          technologies: ["Industrial IoT", "Machine Learning", "Robot Operating System", "C++"]
+        },
+        {
+          id: "innovation-3",
+          title: "Autonomous Navigation Framework",
+          description: "Open-source framework for robust indoor-outdoor robot navigation, used by over 1000 developers worldwide.",
+          status: "In Progress",
+          technologies: ["SLAM", "Path Planning", "Sensor Integration", "Python"]
         }
       ],
       packages: [
         {
-          id: "basic",
-          name: "Basic Package",
-          price: 99,
-          description: "Perfect for small projects",
-          features: ["Up to 5 pages", "Basic SEO", "Mobile Responsive"],
+          id: "robotics-consulting",
+          name: "Robotics Innovation Consulting",
+          price: 2500,
+          description: "Strategic consulting for robotics implementation",
+          features: [
+            "Technical Architecture Review",
+            "AI Integration Strategy",
+            "Robotics System Design",
+            "Implementation Roadmap"
+          ],
         },
-
         {
-          id: "intermediate",
-          name: "Intermediate Package",
-          price: 199,
-          description: "Perfect for medium projects",
-          features: ["Up to 5 pages", "Intermediate SEO", "Mobile Responsive"],
+          id: "startup-mentoring",
+          name: "AI Startup Mentoring",
+          price: 1500,
+          description: "Guidance for AI/robotics startups",
+          features: [
+            "Business Model Validation",
+            "Technical Stack Review",
+            "Market Entry Strategy",
+            "Funding Preparation"
+          ],
         },
-
-        
         {
-          id: "advanced",
-          name: "Advanced Package",
-          price: 299,
-          description: "Perfect for large projects",
-          features: ["Up to 5 pages", "Advanced SEO", "All devices Responsive"],
-        },
+          id: "workshop-training",
+          name: "Hands-on Robotics Workshop",
+          price: 3500,
+          description: "Intensive training for teams",
+          features: [
+            "Custom Curriculum",
+            "Practical Exercises",
+            "Code Reviews",
+            "Implementation Support",
+            "3-Month Follow-up"
+          ],
+        }
       ],
+      availableDates: [
+        new Date(2024, 3, 15),
+        new Date(2024, 3, 16),
+        new Date(2024, 3, 20),
+        new Date(2024, 3, 21)
+      ]
     },
     janedoe: {
       fullName: "Jane Doe",
